@@ -46,7 +46,7 @@ class Base():
 
     def _get_table_cols(self):
         return [x for x in self.__class__.__dict__.keys()
-            if not x.startswith('__')]
+                if not x.startswith('__')]
 
     def _check_tablename_connection(self):
         if not self._get_table_name() or not self.connection:
@@ -236,13 +236,14 @@ class Base():
     def select_all(self, select_cols='*'):
         if not self._check_tablename_connection():
             return
-        sql_stmt = 'SELECT {} FROM {}'.format(select_cols, self._get_table_name())
+        sql_stmt = 'SELECT {} FROM {}'.format(
+            select_cols, self._get_table_name())
         table_join = ''
         for col in self.table_cols:
             if col.is_fk:
                 table_join += ' INNER JOIN {} ON {}.{}={}.{}'.format(
-                    col.fk_ref_table, col.fk_ref_table, col.fk_ref_col, self._get_table_name(), col.name
-                )
+                    col.fk_ref_table, col.fk_ref_table, col.fk_ref_col,
+                    self._get_table_name(), col.name)
         sql_stmt += table_join
         if self.is_values_passed:
             args = ', '.join(c[0] + '=' + str(c[1]) for c in self.values_list)
