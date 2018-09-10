@@ -24,7 +24,7 @@ Then import the orm_lite.py library into your project.
 ## Using
 Import Base class from orm_lite.
 
-**from orm_lite import Base**
+**from orm_lite.base import Base**
 
 ### Tables definition
 The table is defined in a class inherited from the class **orm_lite.Base**.
@@ -32,7 +32,7 @@ The table is defined in a class inherited from the class **orm_lite.Base**.
 In the class, you must specify the table name in a special variable **\_\_tablename__**.
 After that, you need to describe the table columns.
 
-**COLUMN_NAME = (TYPE, PARAMS)**
+**COLUMN_NAME = (TYPE, PARAMS)**    
 
 The type can be of type 'int', 'text', 'char (length)', 'varchar (length)'.
 
