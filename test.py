@@ -1,4 +1,4 @@
-from orm_lite import Base
+from orm_lite.base import Base
 import sqlite3
 
 
